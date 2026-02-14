@@ -3,553 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BabyCareX - Complete baby health care app for 0-5 years. Track vaccinations, health, growth and development. Free, bilingual, offline ready.">
-    <meta name="keywords" content="baby health, vaccination, child care, pediatric, baby app, health tracking">
-    <meta name="author" content="BabyCareX Team">
     <title>BabyCareX - Baby Health Care App</title>
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            color: white;
-            padding: 100px 2rem;
-            text-align: center;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: slideDown 0.8s ease-out;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .hero-emoji {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #4A90E2;
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 2rem;
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: #333;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: #4A90E2;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .benefits-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .benefits-list {
-            list-style: none;
-        }
-
-        .benefits-list li {
-            padding: 15px 0;
-            padding-left: 50px;
-            position: relative;
-            font-size: 16px;
-            color: #666;
-        }
-
-        .benefits-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #52C41A;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* Specs Section */
-        .specs {
-            padding: 80px 2rem;
-            background: #f8f9fa;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .spec-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid #4A90E2;
-        }
-
-        .spec-card h4 {
-            color: #4A90E2;
-            margin-bottom: 10px;
-        }
-
-        .spec-card p {
-            color: #666;
-        }
-
-        /* Downloads Section */
-        .downloads {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .downloads h2 {
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
-
-        .download-buttons {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .download-btn {
-            background: white;
-            color: #4A90E2;
-            padding: 20px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-5px);
-        }
-
-        .download-icon {
-            font-size: 30px;
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 80px 2rem;
-            background: white;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-
-        .faq-question {
-            padding: 20px;
-            background: #f8f9fa;
-            cursor: pointer;
-            font-weight: bold;
-            color: #4A90E2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: #f0f0f0;
-        }
-
-        .faq-answer {
-            padding: 20px;
-            display: none;
-            background: white;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .faq-item.open .faq-answer {
-            display: block;
-        }
-
-        .faq-toggle {
-            font-size: 20px;
-        }
-
-        /* Languages Section */
-        .languages {
-            padding: 80px 2rem;
-            background: #f8f9fa;
-            text-align: center;
-        }
-
-        .language-flags {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .language-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .language-flag {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .stat-card {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 40px 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 15px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #4A90E2;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .benefits-content {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #4A90E2;
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #357ABD;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        nav { background: #4A90E2; padding: 15px 20px; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; margin-right: 20px; text-decoration: none; font-weight: bold; cursor: pointer; }
+        nav a:hover { opacity: 0.8; }
+        .hero { background: linear-gradient(135deg, #4A90E2, #357ABD); color: white; padding: 60px 20px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero p { font-size: 18px; margin-bottom: 10px; }
+        .section { background: white; padding: 50px 20px; margin: 20px auto; max-width: 1200px; border-radius: 5px; }
+        .section h2 { font-size: 32px; margin-bottom: 30px; text-align: center; color: #4A90E2; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        .feature-card { background: #f9f9f9; padding: 30px; border-radius: 8px; border-left: 4px solid #4A90E2; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .feature-icon { font-size: 40px; margin-bottom: 15px; }
+        .feature-card h3 { color: #4A90E2; margin-bottom: 10px; font-size: 18px; }
+        .feature-card p { color: #666; font-size: 14px; line-height: 1.6; }
+        .faq-item { background: #f9f9f9; margin-bottom: 15px; border-radius: 5px; border-left: 4px solid #4A90E2; }
+        .faq-question { padding: 20px; cursor: pointer; font-weight: bold; color: #4A90E2; user-select: none; }
+        .faq-question:hover { background: #f0f0f0; }
+        .faq-answer { padding: 0 20px; display: none; background: white; color: #666; line-height: 1.8; }
+        .faq-item.open .faq-answer { display: block; padding: 20px; }
+        .btn { background: white; color: #4A90E2; padding: 15px 30px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #f0f0f0; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        footer { background: #333; color: white; padding: 30px 20px; text-align: center; }
+        footer p { margin: 10px 0; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">
-                👶 BabyCareX
-            </div>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#benefits">Benefits</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <!-- NAVIGATION -->
+    <nav class="container">
+        <a onclick="scrollTo('home')">🏠 Home</a>
+        <a onclick="scrollTo('features')">✨ Features</a>
+        <a onclick="scrollTo('benefits')">💙 Benefits</a>
+        <a onclick="scrollTo('faq')">❓ FAQ</a>
+        <a onclick="scrollTo('contact')">📞 Contact</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-emoji">👶</div>
+    <!-- HERO SECTION -->
+    <div class="hero" id="home">
+        <div style="font-size: 80px; margin-bottom: 20px;">👶</div>
         <h1>BabyCareX</h1>
-        <h2 style="color: white; font-size: 32px; margin-bottom: 20px;">Complete Baby Health Care App</h2>
-        <p>Track vaccinations, health records, growth and developmental milestones for your baby (0-5 years)</p>
-        <p style="font-size: 18px; opacity: 0.9;">✓ 100% FREE ✓ Bilingual (English & Bengali) ✓ Works Offline</p>
-        <div class="cta-buttons">
-            <a href="#download" class="btn btn-primary">📥 Download Now</a>
-            <a href="#features" class="btn btn-secondary">📖 Learn More</a>
+        <p>Complete Baby Health Care App</p>
+        <p>Track vaccinations, health, growth & development for babies 0-5 years</p>
+        <p style="margin-top: 20px; font-size: 16px;">✓ 100% FREE ✓ Bilingual ✓ Works Offline</p>
+        <div style="margin-top: 30px;">
+            <a href="#features" class="btn">📖 Learn More</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- FEATURES SECTION -->
+    <div class="section" id="features">
         <div class="container">
-            <h2 class="section-title">✨ Key Features</h2>
+            <h2>✨ Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">💉</div>
@@ -579,12 +87,12 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3>Secure & Private</h3>
-                    <p>Encrypted data. Privacy protected. No ads. No tracking. Safe for your entire family.</p>
+                    <p>Encrypted data. Privacy protected. No ads. No tracking. Safe for your family.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h3>Offline Ready</h3>
-                    <p>Works without internet. Auto-sync when online. Cloud backup keeps your data safe always.</p>
+                    <p>Works without internet. Auto-sync when online. Cloud backup keeps your data safe.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💚</div>
@@ -593,323 +101,177 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits">
+    <!-- BENEFITS SECTION -->
+    <div class="section" id="benefits">
         <div class="container">
-            <h2 class="section-title">💙 Why Choose BabyCareX?</h2>
-            <div class="benefits-content">
+            <h2>💙 Why Choose BabyCareX?</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
                 <div>
-                    <h3 style="color: #4A90E2; margin-bottom: 30px; font-size: 24px;">👨‍👩‍👧 For Parents</h3>
-                    <ul class="benefits-list">
-                        <li>Never forget vaccination dates ever</li>
-                        <li>Track baby's health easily & quickly</li>
-                        <li>Monitor growth & development progress</li>
-                        <li>Access records anytime, anywhere</li>
-                        <li>Share with caregivers & family</li>
-                        <li>Medical-grade information always</li>
-                        <li>Bilingual support available</li>
-                        <li>Completely free to download & use</li>
+                    <h3 style="color: #4A90E2; margin-bottom: 20px;">👨‍👩‍👧 For Parents</h3>
+                    <ul style="list-style: none;">
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Never forget vaccination dates
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Track baby's health easily
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Monitor growth & development
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Access records anytime
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Share with caregivers
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Medical-grade information
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Bilingual support
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Completely free
+                        </li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="color: #4A90E2; margin-bottom: 30px; font-size: 24px;">🏥 For Healthcare Workers</h3>
-                    <ul class="benefits-list">
-                        <li>WHO-validated protocols included</li>
-                        <li>IAP recommended schedule used</li>
-                        <li>Easy health record keeping system</li>
-                        <li>Better patient tracking capability</li>
-                        <li>Improved immunization rates overall</li>
-                        <li>Early disease detection features</li>
-                        <li>Better health outcomes for patients</li>
-                        <li>Comprehensive analytics available</li>
+                    <h3 style="color: #4A90E2; margin-bottom: 20px;">🏥 For Healthcare Workers</h3>
+                    <ul style="list-style: none;">
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            WHO-validated protocols
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            IAP recommended schedule
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Easy health record keeping
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Better patient tracking
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Improved immunization rates
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Early disease detection
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Better health outcomes
+                        </li>
+                        <li style="padding: 12px 0; padding-left: 30px; position: relative; color: #666;">
+                            <span style="position: absolute; left: 0; color: #52C41A; font-size: 20px; font-weight: bold;">✓</span>
+                            Comprehensive analytics
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Specifications Section -->
-    <section class="specs">
+    <!-- FAQ SECTION -->
+    <div class="section" id="faq">
         <div class="container">
-            <h2 class="section-title">⚙️ Technical Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>📱 Platforms</h4>
-                    <p>Android 8.0+<br>iOS 12.0+</p>
-                </div>
-                <div class="spec-card">
-                    <h4>💾 Size</h4>
-                    <p>~50-80 MB<br>Lightweight & Fast</p>
-                </div>
-                <div class="spec-card">
-                    <h4>🌐 Languages</h4>
-                    <p>English<br>Bengali</p>
-                </div>
-                <div class="spec-card">
-                    <h4>🔐 Security</h4>
-                    <p>AES-256 Encryption<br>HIPAA Compliant</p>
-                </div>
-                <div class="spec-card">
-                    <h4>💚 Cost</h4>
-                    <p>100% Free<br>No Ads Ever</p>
-                </div>
-                <div class="spec-card">
-                    <h4>📊 Data</h4>
-                    <p>Cloud Backup<br>Offline Mode</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section class="languages">
-        <div class="container">
-            <h2 class="section-title">🌍 Available Languages</h2>
-            <div class="language-flags">
-                <div class="language-card">
-                    <div class="language-flag">🇬🇧</div>
-                    <h3>English</h3>
-                    <p>Complete English interface<br>Easy to understand</p>
-                </div>
-                <div class="language-card">
-                    <div class="language-flag">🇧🇩</div>
-                    <h3>Bengali</h3>
-                    <p>সম্পূর্ণ বাংলা ইন্টারফেস<br>বোঝা সহজ</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <h2 class="section-title">📈 Our Impact</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">1M+</div>
-                    <div class="stat-label">Families Helped</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">500K+</div>
-                    <div class="stat-label">Children Tracked</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">45+</div>
-                    <div class="stat-label">Milestones</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Vaccines</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section id="download" class="downloads">
-        <div class="container">
-            <h2>📥 Download BabyCareX</h2>
-            <p style="font-size: 18px; margin-bottom: 30px;">Get the app on your device - 100% FREE</p>
-            <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=com.babycarex.app" target="_blank" class="download-btn">
-                    <div class="download-icon">🤖</div>
-                    <div>Google Play Store</div>
-                </a>
-                <a href="https://apps.apple.com/app/babycarex/id123456789" target="_blank" class="download-btn">
-                    <div class="download-icon">🍎</div>
-                    <div>Apple App Store</div>
-                </a>
-                <a href="https://www.amazon.com/BabyCareX-Baby-Health-Care/dp/B0XXXXXXXXX" target="_blank" class="download-btn">
-                    <div class="download-icon">📦</div>
-                    <div>Amazon Appstore</div>
-                </a>
-            </div>
-            <p style="margin-top: 30px; font-size: 16px;">All stores: 100% FREE • No ads • No tracking • No hidden charges</p>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2 class="section-title">❓ Frequently Asked Questions</h2>
+            <h2>❓ Frequently Asked Questions</h2>
             
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is BabyCareX really 100% free?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! BabyCareX is completely free forever. No hidden charges, no premium features, no ads. All features are completely free for all users, always.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Is BabyCareX really 100% free?</div>
+                <div class="faq-answer">Yes! BabyCareX is completely free forever. No hidden charges, no premium features, no ads. All features are completely free for all users!</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I use it without internet connection?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! BabyCareX works completely offline. You can track health, vaccines, and milestones without any internet. Data automatically syncs when you go back online.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Can I use it without internet?</div>
+                <div class="faq-answer">Yes! BabyCareX works completely offline. You can track health, vaccines, and milestones without any internet. Data automatically syncs when you go online.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is my baby's data safe and private?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Absolutely! Your data is encrypted with military-grade AES-256 encryption. We never share your personal information. Your privacy is always protected.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Is my baby's data safe?</div>
+                <div class="faq-answer">Absolutely! Your data is encrypted with military-grade AES-256 encryption. We never share your personal information. Your privacy is always protected.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Which vaccines are tracked in the app?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    We track all 12 recommended vaccines from birth to 5 years: BCG, Hepatitis B, Polio, DPT, Measles & Rubella, and boosters - following WHO and IAP guidelines.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Which vaccines are tracked?</div>
+                <div class="faq-answer">We track all 12 recommended vaccines from birth to 5 years: BCG, Hepatitis B, Polio, DPT, Measles & Rubella, and boosters - following WHO and IAP guidelines.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I track multiple children?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! You can create profiles for multiple children and track each one independently. Perfect for families with multiple kids of different ages.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Can I track multiple children?</div>
+                <div class="faq-answer">Yes! You can create profiles for multiple children and track each one independently. Perfect for families with multiple kids of different ages.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is the app available in my language?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    BabyCareX is available in English and Bengali. Easy language switching in settings. More languages coming soon based on user feedback!
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Is the app available in my language?</div>
+                <div class="faq-answer">BabyCareX is available in English and Bengali. Easy language switching in settings. More languages coming soon based on user feedback!</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can health workers and doctors use it?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! Healthcare professionals, doctors, nurses, and health workers can use BabyCareX for patient health record management and vaccination tracking.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Can health workers and doctors use it?</div>
+                <div class="faq-answer">Yes! Healthcare professionals, doctors, nurses, and health workers can use BabyCareX for patient health record management and vaccination tracking.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I export and backup my data?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes! You can export all your health records and vaccination history. Data is automatically backed up to secure cloud storage for safety.
-                </div>
+                <div class="faq-question" onclick="toggleFAQ(this)">Can I export and backup my data?</div>
+                <div class="faq-answer">Yes! You can export all your health records and vaccination history. Data is automatically backed up to secure cloud storage for safety.</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" style="padding: 80px 2rem; background: #f8f9fa;">
+    <!-- CONTACT SECTION -->
+    <div class="section" id="contact">
         <div class="container">
-            <h2 class="section-title">📞 Get in Touch</h2>
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <p style="font-size: 16px; color: #666; margin-bottom: 30px;">Have questions or feedback? We'd love to hear from you!</p>
-                <p style="font-size: 18px; margin-bottom: 20px;">
-                    📧 Email: <a href="mailto:support@babycarex.com" style="color: #4A90E2; text-decoration: none; font-weight: bold;">support@babycarex.com</a>
-                </p>
-                <p style="font-size: 18px; margin-bottom: 20px;">
-                    🌐 Website: <a href="https://www.babycarex.com" style="color: #4A90E2; text-decoration: none; font-weight: bold;">www.babycarex.com</a>
-                </p>
-                <p style="font-size: 18px;">
-                    💬 Response time: Within 24 hours
-                </p>
+            <h2>📞 Get in Touch</h2>
+            <div style="text-align: center;">
+                <p style="font-size: 18px; margin-bottom: 20px;">Have questions? We'd love to hear from you!</p>
+                <p style="font-size: 16px; margin-bottom: 10px;">📧 Email: <strong>support@babycarex.com</strong></p>
+                <p style="font-size: 16px; margin-bottom: 10px;">🌐 Website: <strong>www.babycarex.com</strong></p>
+                <p style="font-size: 16px;">💬 Response time: Within 24 hours</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <p style="font-size: 18px; font-weight: bold; margin-bottom: 20px;">👶 BabyCareX</p>
-            <p style="font-size: 16px;">Complete Baby Health Care App for Children 0-5 Years</p>
-            <p style="font-size: 16px;">✓ Available in English & Bengali • ✓ 100% Free • ✓ Offline Ready • ✓ Secure & Private</p>
-            
-            <div class="footer-links" style="margin-top: 20px;">
-                <a href="#features">Features</a>
-                <a href="#benefits">Benefits</a>
-                <a href="#faq">FAQ</a>
-                <a href="https://babycarex.com/privacy" target="_blank">Privacy Policy</a>
-                <a href="https://babycarex.com/terms" target="_blank">Terms of Service</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <p style="margin-top: 30px; opacity: 0.8; font-size: 14px;">
-                ⚕️ Medical Disclaimer: This app provides general health information and is not a substitute for professional medical advice. 
-                Always consult your pediatrician for medical concerns.
-            </p>
-            <p style="margin-top: 20px; opacity: 0.8; font-size: 14px;">
-                © 2026 BabyCareX. All rights reserved. | Designed for families, built by doctors. ❤️
-            </p>
-        </div>
+        <p style="font-size: 20px; font-weight: bold;">👶 BabyCareX</p>
+        <p>Complete Baby Health Care App for Children 0-5 Years</p>
+        <p>✓ Available in English & Bengali • ✓ 100% Free • ✓ Offline Ready • ✓ Secure & Private</p>
+        <p style="margin-top: 20px; opacity: 0.8; font-size: 12px;">
+            ⚕️ Medical Disclaimer: This app provides general health information and is not a substitute for professional medical advice. Always consult your pediatrician for medical concerns.
+        </p>
+        <p style="margin-top: 10px; opacity: 0.8; font-size: 12px;">
+            © 2026 BabyCareX. All rights reserved. | Designed for families, built by doctors. ❤️
+        </p>
     </footer>
 
     <script>
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const item = this.parentElement;
-                const isOpen = item.classList.contains('open');
-                
-                // Close all other items
-                document.querySelectorAll('.faq-item').forEach(q => q.classList.remove('open'));
-                
-                // Toggle current item
-                if (!isOpen) {
-                    item.classList.add('open');
-                    this.querySelector('.faq-toggle').textContent = '−';
-                }
-            });
-        });
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            document.querySelectorAll('.faq-item').forEach(q => q.classList.remove('open'));
+            item.classList.add('open');
+        }
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.feature-card, .spec-card, .language-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(card);
-        });
+        function scrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
